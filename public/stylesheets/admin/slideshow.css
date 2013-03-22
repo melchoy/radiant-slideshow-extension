@@ -1,0 +1,15 @@
+.edit_slide .slide_container {
+	overflow: hidden;
+	padding-bottom: 20px;
+}
+
+.edit_slide .slide_form {
+	float: left;
+	padding-right: 10px;
+}
+
+.edit_slide .slide_image {
+	float: left;
+	padding-top: 30px;
+	padding-left: 20px;
+}

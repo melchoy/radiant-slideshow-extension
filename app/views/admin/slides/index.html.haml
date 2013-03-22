@@ -1,0 +1,27 @@
+- @page_title = "Homepage Slides" + ' - ' + default_page_title
+- include_stylesheet 'admin/slideshow'
+
+.outset
+  %table.index
+    %thead
+      %tr
+        %th= "Name"
+        %th= "Url"
+        %th= "Actions"
+    %tbody
+      - unless models.blank?
+        - models.each do |slide|
+          %tr
+            %td.name               
+              = link_to image_tag(slide.slide_image.url(:tiny)), edit_admin_slide_path(slide)
+              = "&nbsp;"
+              = link_to slide.name, edit_admin_slide_path(slide)
+            %td.link
+              = slide.link
+            %td.actions
+              = link_to image('minus') + ' ' + t('remove'), admin_slide_path(slide), :class => "action", :confirm => 'Are you sure you want to delete this slide?', :method => :delete
+
+#actions
+  = pagination_for(models)
+  %ul
+    %li= link_to image('plus') + " " + t("new_slide"), new_admin_slide_path, :class => 'action_button'

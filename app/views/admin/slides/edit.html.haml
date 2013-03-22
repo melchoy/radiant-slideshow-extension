@@ -1,0 +1,7 @@
+- @page_title = 'Homepage Slides' + ' - ' + default_page_title
+- body_classes << 'edit_slide'
+- include_stylesheet 'admin/slideshow'
+
+%h1= "Edit: #{@slide.name}"  
+
+= render :partial => 'form' 

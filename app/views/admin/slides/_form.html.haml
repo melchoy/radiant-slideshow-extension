@@ -1,0 +1,27 @@
+- form_for [:admin, @slide], :html => { :multipart => true } do |f|
+  
+  .slide_form  
+    %p
+      = f.label :name, t('name') 
+      = f.text_field :name, :class => "textbox activate", :size => 32, :maxlength => 100
+  
+    %p
+      = f.label :link, t('link') 
+      = f.text_field :link, :class => "textbox activate", :size => 32, :maxlength => 100
+  
+    %p
+      = f.label :slide_image, t('image')
+      = f.file_field :slide_image
+  
+  - unless @slide.id.nil?
+    .slide_image
+      = image_tag @slide.slide_image.url(:normal)
+
+  %br{ :clear=> 'both' }
+  
+  .buttons
+    = save_model_button(@slide)
+    = save_model_and_continue_editing_button(@slide)
+    = t('or')   
+    = link_to t('cancel'), admin_slides_path
+
